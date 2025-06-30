@@ -1,1 +1,35 @@
-console.log("hello world");
+const express = require('express');
+const app = express();
+const PORT = 3001;
+const mongoose = require('mongoose');
+const { signup, signin, todo, todos, update, deletes, done } = require('./routes/route');
+const { auth } = require('./auth');
+
+
+async function main() {
+    await mongoose.connect("");
+}
+main();
+
+app.use(express.json())
+
+app.post("/signup", signup);
+
+app.post("/signin", signin);
+
+app.use(auth);
+
+app.post("/todo", todo);
+
+app.get("/todos", todos);
+
+app.post("/update", update);
+
+app.post("/deletes", deletes);
+
+app.post("/done", done);
+
+
+app.listen(PORT, () => {
+    console.log("the server is listining on Port " + PORT);
+})
