@@ -2,12 +2,15 @@ const express = require('express');
 const app = express();
 const PORT = 3001;
 const mongoose = require('mongoose');
-const { signup, signin, todo, todos, update, deletes, done } = require('./routes/route');
+const { signup, signin, todo, todos, update, deletes, done, undone } = require('./routes/route');
 const { auth } = require('./auth');
+const cors = require('cors');
+
+app.use(cors());
 
 
 async function main() {
-    await mongoose.connect("");
+    await mongoose.connect(""); // ( remember )
 }
 main();
 
@@ -28,6 +31,8 @@ app.post("/update", update);
 app.post("/deletes", deletes);
 
 app.post("/done", done);
+
+app.post("/undone", undone);
 
 
 app.listen(PORT, () => {

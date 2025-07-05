@@ -2,14 +2,14 @@ const { z } = require("zod");
 const { UserModel, TodoModel } = require("../db");
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
-const JWT_SECRETE = "";
+const JWT_SECRETE = "sujal";
 
 async function signup(req, res) {
     const { email, password, firstName } = req.body;
 
     const result = z.object({
         email : z.string().email(),
-        password : z.string().min(1).max(100),
+        password : z.string().min(3).max(100),
         firstName : z.string().min(3).max(100)
     })
 
@@ -70,16 +70,22 @@ async function signin(req, res) {
 
 async function todo(req, res) {
     const userId = req.userId;
-    const { title, description } = req.body;
+    const { title } = req.body;
 
     try {
-        await TodoModel.create({
+        const response = await TodoModel.create({
             title : title,
             done : false,
             userId : userId
         })
     
-        res.json({ Message : "todo is created"});
+        res.json({ Message : "todo is created",
+                   todoId : response._id,
+                   title : response.title,
+                   done : response.done,
+                   time : response.time,
+                   date : response.date
+                });
         
     } catch (error) {
         res.json({ Message : "dataBase is down"});
@@ -161,6 +167,23 @@ async function done(req, res) {
     }
 }
 
+async function undone(req, res) {
+    const { todoId } = req.body;
+
+    try {
+        const undoneTodo = await TodoModel.findByIdAndUpdate(todoId, { done : false }, { new : true });
+
+        if (undoneTodo == null) {
+            res.json({ Message : "Todo Not Found With Null"}); // todoId can be wrong
+        } else {
+            res.json(undoneTodo);
+        }
+        
+    } catch (error) {
+        res.json({ Message : "Todo Not Found"}); // todoId can be wrong
+    }
+}
+
 module.exports = {
     signup,
     signin,
@@ -169,5 +192,6 @@ module.exports = {
     update,
     deletes,
     done,
+    undone,
     JWT_SECRETE
 }
