@@ -10,7 +10,7 @@ app.use(cors());
 
 
 async function main() {
-    await mongoose.connect(""); // ( remember )
+    await mongoose.connect(""); // ( remember with database name )
 }
 main();
 
