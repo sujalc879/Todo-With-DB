@@ -9,7 +9,7 @@ const cross = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30
 
 if (!token || token.length == 0) {
   alert("Please Login to access this page");
-  window.location.href = "signin.html";
+  window.location.href = "index.html";
 }
 
 async function getTodos() {
@@ -266,7 +266,7 @@ function Logout() {
 
   localStorage.removeItem("token");
 
-  window.location.href = "signin.html";
+  window.location.href = "index.html";
   
 }
 
