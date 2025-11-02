@@ -12,7 +12,7 @@ async function handleSignup() {
     } else {
         
     try {
-        await axios.post("http://localhost:3001/signup", {
+        await axios.post("https://todo-with-db-qxqj.onrender.com/signup", {
             firstName,
             email,
             password
