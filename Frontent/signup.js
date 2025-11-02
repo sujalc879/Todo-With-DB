@@ -25,8 +25,6 @@ async function handleSignup() {
 
 
     } catch (error) {
-        console.log(error);
-        
         alert("the email is already exist please enter different one");
     }
 }
