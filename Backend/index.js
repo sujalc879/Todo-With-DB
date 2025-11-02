@@ -5,12 +5,15 @@ const mongoose = require('mongoose');
 const { signup, signin, todo, todos, update, deletes, done, undone } = require('./routes/route');
 const { auth } = require('./auth');
 const cors = require('cors');
+const dotenv = require("dotenv");
+dotenv.config();
+
 
 app.use(cors());
 
 
 async function main() {
-    await mongoose.connect(""); // ( remember with database name )
+    await mongoose.connect(process.env.DATABASE_URL);
 }
 main();
 

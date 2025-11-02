@@ -18,14 +18,14 @@ async function handleSignup() {
             password
         });
         
-        alert("signup successfull"); // alert (remember)
+        alert("signup successfull");
 
         window.location.href = "signin.html";
         
 
 
     } catch (error) {
-        alert("the email is already exist please enter different one"); // alert (remember)
+        alert("the email is already exist please enter different one");
     }
 }
 }

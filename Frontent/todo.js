@@ -258,7 +258,7 @@ async function deleteButton(id) {
     
     
   } catch (error) {
-    alert("problem while deleting the todo"); // alert ( remember )
+    alert("problem while deleting the todo");
   }
 }
 

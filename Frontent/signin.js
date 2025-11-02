@@ -13,6 +13,6 @@ async function handleLogin() {
     window.location.href = "todo.html";
     
   } catch (error) {
-    alert("please enter valid email id & password"); // alert (remember)
+    alert("please enter valid email id & password");
   }
 }
