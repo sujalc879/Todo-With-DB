@@ -20,7 +20,7 @@ async function handleSignup() {
         
         alert("signup successfull");
 
-        window.location.href = "signin.html";
+        window.location.href = "index.html";
         
 
 
