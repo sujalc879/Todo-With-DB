@@ -13,7 +13,7 @@ if (!token || token.length == 0) {
 }
 
 async function getTodos() {
-  const response = await axios.get("https://todo-with-db-qxqj.onrender.com/todos", {
+  const response = await axios.get("https://todo-with-db-dzxy.vercel.app/todos", {
     headers : {
       token : token,
       'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ getTodos();
 async function addTodo() {  // addtodo() calls in html
   const todoInput = document.getElementById("todo-input");
 
-  const response = await axios.post("https://todo-with-db-qxqj.onrender.com/todo", 
+  const response = await axios.post("https://todo-with-db-dzxy.vercel.app/todo", 
     {
      title : todoInput.value.trim()
     },
@@ -126,7 +126,7 @@ async function renderTodo( _id, title, done, time, date ) {
 
 async function todoDone(_id) {
   alert("task complete");
-  await axios.post("https://todo-with-db-qxqj.onrender.com/done", {
+  await axios.post("https://todo-with-db-dzxy.vercel.app/done", {
     todoId : _id
   },
   {
@@ -145,7 +145,7 @@ async function todoDone(_id) {
 
 async function todoUndone(_id) {
   alert("task incomplete");
-  await axios.post("https://todo-with-db-qxqj.onrender.com/undone", {
+  await axios.post("https://todo-with-db-dzxy.vercel.app/undone", {
     todoId : _id
   },
   {
@@ -184,7 +184,7 @@ function editTodoInline(spanEl, id) {
     const newText = input.value.trim();
     if (newText !== '') {
       try {
-        const response = await axios.post(`https://todo-with-db-qxqj.onrender.com/update`,
+        const response = await axios.post(`https://todo-with-db-dzxy.vercel.app/update`,
           {
             title: newText,
             todoId: id
@@ -243,7 +243,7 @@ todoInput.addEventListener('keydown', (e) => {
 
 async function deleteButton(id) {
   try {
-    await axios.post("https://todo-with-db-qxqj.onrender.com/deletes", {
+    await axios.post("https://todo-with-db-dzxy.vercel.app/deletes", {
       todoId : id
     }, {
       headers : {

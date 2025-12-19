@@ -12,7 +12,7 @@ async function handleSignup() {
     } else {
         
     try {
-        await axios.post("https://todo-with-db-qxqj.onrender.com/signup", {
+        await axios.post("https://todo-with-db-dzxy.vercel.app/signup", {
             firstName,
             email,
             password
